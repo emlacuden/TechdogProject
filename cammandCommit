@@ -1,0 +1,4 @@
+add tat ca: git add .
+commit : git commit -m "message"
+pull code moi ve: git pull
+push len: git push 
