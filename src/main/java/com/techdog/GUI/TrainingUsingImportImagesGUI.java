@@ -1,6 +1,5 @@
 package com.techdog.GUI;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
@@ -8,12 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JLabel;
-import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -28,18 +24,18 @@ public class TrainingUsingImportImagesGUI {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TrainingUsingImportImagesGUI window = new TrainingUsingImportImagesGUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					TrainingUsingImportImagesGUI window = new TrainingUsingImportImagesGUI();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.

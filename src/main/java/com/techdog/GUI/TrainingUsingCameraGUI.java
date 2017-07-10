@@ -1,14 +1,13 @@
 package com.techdog.GUI;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-import javax.swing.text.AttributeSet.ColorAttribute;
+
+import com.techdog.Utils.Camera;
 
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -64,6 +63,12 @@ public class TrainingUsingCameraGUI {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel cameraLabel = new JLabel("");
+		Thread cameraThread = new Thread() {
+			public void run(){
+			       Camera.displayCamera(cameraLabel,529,258);
+			    }
+		};
+		cameraThread.start();
 		cameraLabel.setBounds(12, 64, 529, 258);
 		cameraLabel.setBorder(border);
 		frame.getContentPane().add(cameraLabel);
