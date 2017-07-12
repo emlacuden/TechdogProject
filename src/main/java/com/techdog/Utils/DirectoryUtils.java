@@ -6,7 +6,7 @@ import java.io.FilenameFilter;
 public class DirectoryUtils {
 	
 	public static String[] allSubDirectoryName(String path) {
-		File file = new File("/home/hungpp");
+		File file = new File(path);
     	String[] directories = file.list(new FilenameFilter() {
     	  @Override
     	  public boolean accept(File current, String name) {
