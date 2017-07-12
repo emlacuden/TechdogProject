@@ -4,27 +4,37 @@ import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+import com.techdog.model.ImportImageAction;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JLabel;
+import javax.swing.JList;
+
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.List;
+
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Arrays;
 
 public class TrainingUsingImportImagesGUI {
-
 	public JFrame frame;
 	private JTextField nametxt;
 	private JTextField phoneNumbertxt;
 	private JTextField facebooktxt;
-
 	/**
 	 * Launch the application.
 	 */
@@ -156,7 +166,6 @@ public class TrainingUsingImportImagesGUI {
 //		trainingImage_10.setForeground(Color.GRAY);
 		trainingImage_10.setBounds(743, 302, 145, 84);
 		frame.getContentPane().add(trainingImage_10);
-		
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(335, 74, 70, 15);
 		frame.getContentPane().add(lblName);
@@ -176,5 +185,20 @@ public class TrainingUsingImportImagesGUI {
 		JButton btnImport = new JButton("Import");
 		btnImport.setBounds(398, 268, 117, 25);
 		frame.getContentPane().add(btnImport);
+		
+		java.util.List<JLabel> listJLabel = Arrays.asList(trainingImage_1,trainingImage_2,trainingImage_3
+				,trainingImage_4,trainingImage_5,trainingImage_6,trainingImage_7,trainingImage_8
+				,trainingImage_9,trainingImage_10);
+		
+		btnImport.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ImportImageAction iIA = new ImportImageAction();
+				iIA.Action(listJLabel);
+			}
+		});
 	}
+	
 }
