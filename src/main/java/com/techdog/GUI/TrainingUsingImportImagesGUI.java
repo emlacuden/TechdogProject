@@ -1,34 +1,22 @@
 package com.techdog.GUI;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-
-import com.techdog.model.ImportImageAction;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-
-import javax.swing.JLabel;
-import javax.swing.JList;
-
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.List;
-
-import javax.swing.JButton;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+import com.techdog.model.ImportImageAction;
 
 public class TrainingUsingImportImagesGUI {
 	public JFrame frame;
@@ -189,14 +177,21 @@ public class TrainingUsingImportImagesGUI {
 		java.util.List<JLabel> listJLabel = Arrays.asList(trainingImage_1,trainingImage_2,trainingImage_3
 				,trainingImage_4,trainingImage_5,trainingImage_6,trainingImage_7,trainingImage_8
 				,trainingImage_9,trainingImage_10);
-		
 		btnImport.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				ImportImageAction iIA = new ImportImageAction();
-				iIA.Action(listJLabel);
+				iIA.Action(listJLabel, nametxt, phoneNumbertxt);
+			}
+		});
+		btnTrain.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
 			}
 		});
 	}
