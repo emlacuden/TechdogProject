@@ -62,7 +62,7 @@ public class ImportImageAction {
 
 					System.out.println("File Copied..");
 					ImageIcon iIcon = new ImageIcon(dest.getAbsolutePath());
-					if (parent.get(index) != null && parent.get(index).getIcon() == null) {
+					if (parent.get(index) != null) {
 						Image subImg = iIcon.getImage();
 						iIcon = new ImageIcon(subImg.getScaledInstance(parent.get(index).getWidth(),
 								parent.get(index).getHeight(), Image.SCALE_SMOOTH));
