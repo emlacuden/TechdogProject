@@ -21,14 +21,19 @@ import javax.swing.JToggleButton;
 import javax.swing.border.Border;
 
 import com.techdog.Controller.Camera;
+import com.techdog.Controller.ImageProcessController;
 import com.techdog.Utils.Constant;
 import com.techdog.Utils.DirectoryUtils;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
+import java.util.List;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainForm extends Thread {
 
@@ -195,9 +200,23 @@ public class MainForm extends Thread {
 		textField.setBounds(654, 479, 100, 33);
 		admin.add(textField);
 		textField.setColumns(10);
-
+		//create list all label iamge 
+		List<JLabel> listJLabel = Arrays.asList(trainingImage_1, trainingImage_2, trainingImage_3, trainingImage_4,
+				trainingImage_5, trainingImage_6, trainingImage_7, trainingImage_8, trainingImage_9, trainingImage_10);
+		
 		// Conbo box to list all directory
 		JComboBox comboBox = new JComboBox(DirectoryUtils.allSubDirectoryName(Constant.getConstant("dataurl")));
+		ImageProcessController.loadKnownPersonImage(comboBox.getSelectedItem().toString(), listJLabel);
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for (int i = 0; i < listJLabel.size(); i++) {
+					listJLabel.get(i).setIcon(null);
+				}
+				ImageProcessController.loadKnownPersonImage(comboBox.getSelectedItem().toString(), listJLabel);
+				//comboBox.getSelectedItem().toString();
+				//
+			}
+		});
 		comboBox.setBounds(356, 12, 189, 33);
 		admin.add(comboBox);
 

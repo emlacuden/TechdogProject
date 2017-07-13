@@ -21,6 +21,7 @@ import javax.swing.border.Border;
 import org.opencv.core.Mat;
 
 import com.techdog.Controller.Camera;
+import com.techdog.Controller.ImageProcessController;
 import com.techdog.Controller.TrainingController;
 
 public class TrainingUsingCameraGUI {
@@ -177,5 +178,76 @@ public class TrainingUsingCameraGUI {
 		});
 		btnClear.setBounds(320, 563, 117, 25);
 		frame.getContentPane().add(btnClear);
+		// action click for label image 1
+		trainingImage_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listImageForTraining = ImageProcessController.deleteAnImage(listImageForTraining, 0);
+				TrainingController.loadImageToJlabel(listImageForTraining, listJLabel);
+			}
+		});
+		trainingImage_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listImageForTraining = ImageProcessController.deleteAnImage(listImageForTraining, 1);
+				TrainingController.loadImageToJlabel(listImageForTraining, listJLabel);
+			}
+		});
+		trainingImage_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listImageForTraining = ImageProcessController.deleteAnImage(listImageForTraining, 2);
+				TrainingController.loadImageToJlabel(listImageForTraining, listJLabel);
+			}
+		});
+		trainingImage_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listImageForTraining = ImageProcessController.deleteAnImage(listImageForTraining, 3);
+				TrainingController.loadImageToJlabel(listImageForTraining, listJLabel);
+			}
+		});
+		trainingImage_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listImageForTraining = ImageProcessController.deleteAnImage(listImageForTraining, 4);
+				TrainingController.loadImageToJlabel(listImageForTraining, listJLabel);
+			}
+		});
+		trainingImage_6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listImageForTraining = ImageProcessController.deleteAnImage(listImageForTraining, 5);
+				TrainingController.loadImageToJlabel(listImageForTraining, listJLabel);
+			}
+		});
+		trainingImage_7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listImageForTraining = ImageProcessController.deleteAnImage(listImageForTraining, 6);
+				TrainingController.loadImageToJlabel(listImageForTraining, listJLabel);
+			}
+		});
+		trainingImage_8.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listImageForTraining = ImageProcessController.deleteAnImage(listImageForTraining, 7);
+				TrainingController.loadImageToJlabel(listImageForTraining, listJLabel);
+			}
+		});
+		trainingImage_9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listImageForTraining = ImageProcessController.deleteAnImage(listImageForTraining, 8);
+				TrainingController.loadImageToJlabel(listImageForTraining, listJLabel);
+			}
+		});
+		trainingImage_10.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listImageForTraining = ImageProcessController.deleteAnImage(listImageForTraining, 9);
+				TrainingController.loadImageToJlabel(listImageForTraining, listJLabel);
+			}
+		});
 	}
 }
