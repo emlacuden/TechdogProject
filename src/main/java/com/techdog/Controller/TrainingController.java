@@ -12,12 +12,20 @@ import org.opencv.imgproc.Imgproc;
 
 public class TrainingController {
 	public static void loadImageToJlabel(List<Mat> listImage, List<JLabel> listLabel) {
-		if (listImage.size() == 0)
+		if (listImage.size() == 0) {
+			for(int i=0; i<listLabel.size();i++) {
+				listLabel.get(i).setIcon(null);
+			}
 			return;
+		}
 
 		int loadNumber = 0;
-		if (listImage.size() < listLabel.size())
+		if (listImage.size() <= listLabel.size()) {
 			loadNumber = listImage.size();
+			for(int i=listImage.size();i<listLabel.size();i++) {
+				listLabel.get(i).setIcon(null);
+			}
+		}
 		else
 			loadNumber = listLabel.size();
 		Mat resizeimage = new Mat();
@@ -26,8 +34,6 @@ public class TrainingController {
 
 			Imgproc.resize(listImage.get(i), resizeimage, sz);
 			BufferedImage img = Camera.matToBufferedImage(resizeimage);
-			// resizeimage = new Mat();
-
 			listLabel.get(i).setIcon(new ImageIcon(img));
 		}
 
