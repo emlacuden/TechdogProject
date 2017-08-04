@@ -35,7 +35,6 @@ public class ImageProcessController {
 			Imgproc.resize(listImage.get(i), resizeimage, sz);
 			BufferedImage img = Camera.matToBufferedImage(resizeimage);
 			// resizeimage = new Mat();
-
 			listLabel.get(i).setIcon(new ImageIcon(img));
 		}
 	}

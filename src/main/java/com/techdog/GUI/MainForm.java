@@ -25,6 +25,8 @@ import com.techdog.Controller.ImageProcessController;
 import com.techdog.Utils.Constant;
 import com.techdog.Utils.DirectoryUtils;
 
+import py4j.GatewayServer;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
@@ -50,6 +52,8 @@ public class MainForm extends Thread {
 				try {
 					MainForm window = new MainForm();
 					window.frame.setVisible(true);
+					GatewayServer server = new GatewayServer(window);
+					server.start();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -200,10 +204,10 @@ public class MainForm extends Thread {
 		textField.setBounds(654, 479, 100, 33);
 		admin.add(textField);
 		textField.setColumns(10);
-		//create list all label iamge 
+		// create list all label iamge
 		List<JLabel> listJLabel = Arrays.asList(trainingImage_1, trainingImage_2, trainingImage_3, trainingImage_4,
 				trainingImage_5, trainingImage_6, trainingImage_7, trainingImage_8, trainingImage_9, trainingImage_10);
-		
+
 		// Conbo box to list all directory
 		JComboBox comboBox = new JComboBox(DirectoryUtils.allSubDirectoryName(Constant.getConstant("dataurl")));
 		ImageProcessController.loadKnownPersonImage(comboBox.getSelectedItem().toString(), listJLabel);
@@ -213,7 +217,7 @@ public class MainForm extends Thread {
 					listJLabel.get(i).setIcon(null);
 				}
 				ImageProcessController.loadKnownPersonImage(comboBox.getSelectedItem().toString(), listJLabel);
-				//comboBox.getSelectedItem().toString();
+				// comboBox.getSelectedItem().toString();
 				//
 			}
 		});

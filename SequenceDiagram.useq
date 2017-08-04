@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.0" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="com.techdog.GUI.MainForm" project="techdogproject" 
+    file="/techdogproject/src/main/java/com/techdog/GUI/MainForm.java" binary="false" label="mainForm" type="class" 
+    autoSize="false">    
+    <position height="180" width="232" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="54" width="81" x="5" y="109"/>    
+    </execution>  
+  </object>  
+  <object id="5" language="java" name="com.techdog.Controller.Camera" project="techdogproject" 
+    file="/techdogproject/src/main/java/com/techdog/Controller/Camera.java" binary="false" label="camera" type="class" 
+    autoSize="false">    
+    <position height="162" width="332" x="85" y="0"/>    
+    <execution id="4">      
+      <position height="18" width="104" x="90" y="127"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="displayCamera(javax.swing.JLabel,int,int):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>
+</sequence-diagram>
