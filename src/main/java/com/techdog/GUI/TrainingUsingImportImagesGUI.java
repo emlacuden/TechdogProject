@@ -181,6 +181,7 @@ public class TrainingUsingImportImagesGUI {
 		java.util.List<JLabel> listJLabel = Arrays.asList(trainingImage_1, trainingImage_2, trainingImage_3,
 				trainingImage_4, trainingImage_5, trainingImage_6, trainingImage_7, trainingImage_8, trainingImage_9,
 				trainingImage_10);
+
 		btnImport.addActionListener(new ActionListener() {
 
 			@Override
@@ -190,25 +191,26 @@ public class TrainingUsingImportImagesGUI {
 				iIA.Action(listJLabel, nametxt, phoneNumbertxt);
 			}
 		});
-//		btnTrain.addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				// TODO Auto-generated method stub
-//				try {
-//					String s = null;
-//					Process p = Runtime.getRuntime().exec("python /home/kibahero2802/Desktop/pythonExamples/test.py");
-//					BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-//					System.out.println("Here is the standard output of the command:\n");
-//		            while ((s = stdInput.readLine()) != null) {
-//		                System.out.println(s);
-//		            }
-//				} catch (IOException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//			}
-//		});
+
+		btnTrain.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					String s = null;
+					Process p = Runtime.getRuntime().exec("python /home/kibahero2802/Desktop/pythonExamples/test.py");
+					BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+					System.out.println("Here is the standard output of the command:\n");
+					while ((s = stdInput.readLine()) != null) {
+						System.out.println(s);
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 	}
 
 }

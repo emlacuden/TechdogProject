@@ -27,7 +27,7 @@ public class ImportImageAction {
 			phoneNumber.setText("");
 		}
 		JFileChooser fileChooser = new JFileChooser();
-		javax.swing.filechooser.FileFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png");
+		javax.swing.filechooser.FileFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png");
 		fileChooser.setFileFilter(filter);
 		fileChooser.setMultiSelectionEnabled(true);
 		fileChooser.setAcceptAllFileFilterUsed(false);
