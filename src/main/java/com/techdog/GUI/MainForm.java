@@ -1,16 +1,13 @@
 package com.techdog.GUI;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.Image;
-
 import javax.swing.JTabbedPane;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Color;
-
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -19,14 +16,10 @@ import javax.swing.JLayeredPane;
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 import javax.swing.border.Border;
-
 import com.techdog.Controller.Camera;
 import com.techdog.Controller.ImageProcessController;
 import com.techdog.Utils.Constant;
 import com.techdog.Utils.DirectoryUtils;
-
-import py4j.GatewayServer;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
@@ -52,8 +45,6 @@ public class MainForm extends Thread {
 				try {
 					MainForm window = new MainForm();
 					window.frame.setVisible(true);
-					GatewayServer server = new GatewayServer(window);
-					server.start();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
@@ -25,7 +26,7 @@ public class TrainingUsingImportImagesGUI {
 	public JFrame frame;
 	private JTextField nametxt;
 	private JTextField phoneNumbertxt;
-	private JTextField facebooktxt;
+	private String imagePath;
 
 	/**
 	 * Launch the application.
@@ -77,10 +78,6 @@ public class TrainingUsingImportImagesGUI {
 		phoneNumbertxt.setBounds(335, 150, 250, 36);
 		frame.getContentPane().add(phoneNumbertxt);
 
-		facebooktxt = new JTextField();
-		facebooktxt.setColumns(10);
-		facebooktxt.setBounds(335, 210, 250, 36);
-		frame.getContentPane().add(facebooktxt);
 
 		JLabel lblTraining = new JLabel("Training");
 		lblTraining.setForeground(new Color(51, 51, 51));
@@ -187,8 +184,13 @@ public class TrainingUsingImportImagesGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				ImportImageAction iIA = new ImportImageAction();
-				iIA.Action(listJLabel, nametxt, phoneNumbertxt);
+				if (!nametxt.getText().equals("")) {
+					ImportImageAction iIA = new ImportImageAction();
+					iIA.Action(listJLabel, nametxt);
+					imagePath = iIA.getPath();
+				} else {
+					JOptionPane.showMessageDialog(null, "Please enter name first");
+				}
 			}
 		});
 
@@ -197,18 +199,23 @@ public class TrainingUsingImportImagesGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				try {
-					String s = null;
-					Process p = Runtime.getRuntime().exec("python /home/kibahero2802/Desktop/pythonExamples/test.py");
-					BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-					System.out.println("Here is the standard output of the command:\n");
-					while ((s = stdInput.readLine()) != null) {
-						System.out.println(s);
+				if (trainingImage_1.getIcon() != null) {
+					try {
+						Process p = Runtime.getRuntime().exec("python" + "/home/hungpp/Desktop/train.py" + "-i" + imagePath);
+						BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+						System.out.println("Here is the standard output of the command:\n");
+						String s = null;
+						while ((s = stdInput.readLine()) != null) {
+							System.out.println(s);
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} else {
+					JOptionPane.showMessageDialog(null, "Import images before traning.");
 				}
+
 			}
 		});
 	}

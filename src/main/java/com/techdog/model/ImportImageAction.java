@@ -11,20 +11,28 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ImportImageAction {
+	private String path;
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
 	public ImportImageAction() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void Action(List<JLabel> parent, JTextField name, JTextField phoneNumber) {
+	public void Action(List<JLabel> parent, JTextField name) {
 		if (name == null) {
 			name.setText("");
-		}
-		if (phoneNumber == null) {
-			phoneNumber.setText("");
 		}
 		JFileChooser fileChooser = new JFileChooser();
 		javax.swing.filechooser.FileFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png");
@@ -38,8 +46,9 @@ public class ImportImageAction {
 				index++;
 				String filePath = file.getAbsolutePath();
 				File folder = new File("/home/kibahero2802/TechDogProject/src/main/java/com/techdog/model/dataSave/"
-						+ name.getText() + "-" + phoneNumber.getText());
+						+ name.getText());
 				folder.mkdir();
+				path = folder.getAbsolutePath();
 				InputStream is = null;
 				OutputStream os = null;
 				try {
@@ -73,7 +82,7 @@ public class ImportImageAction {
 				}
 			}
 		} else {
-			System.out.println("Failed to Load");
+			JOptionPane.showMessageDialog(null, "Faied to load");
 		}
 	}
 }
