@@ -121,18 +121,18 @@ public class TrainingUsingCameraGUI {
 		frame.getContentPane().add(nameTxt);
 		nameTxt.setColumns(10);
 
-		phoneNumberTxt = new JTextField();
-		phoneNumberTxt.setColumns(10);
-		phoneNumberTxt.setBounds(583, 190, 250, 36);
-		frame.getContentPane().add(phoneNumberTxt);
+//		phoneNumberTxt = new JTextField();
+//		phoneNumberTxt.setColumns(10);
+//		phoneNumberTxt.setBounds(583, 190, 250, 36);
+//		frame.getContentPane().add(phoneNumberTxt);
 
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(583, 64, 70, 15);
 		frame.getContentPane().add(lblName);
 
-		JLabel lblPhoneNumber = new JLabel("Phone Number");
-		lblPhoneNumber.setBounds(583, 163, 250, 15);
-		frame.getContentPane().add(lblPhoneNumber);
+//		JLabel lblPhoneNumber = new JLabel("Phone Number");
+//		lblPhoneNumber.setBounds(583, 163, 250, 15);
+//		frame.getContentPane().add(lblPhoneNumber);
 
 		JLabel lblTraining = new JLabel("Training");
 		lblTraining.setForeground(new Color(51, 51, 51));

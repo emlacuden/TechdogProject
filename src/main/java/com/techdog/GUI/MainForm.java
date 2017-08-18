@@ -1,42 +1,40 @@
 package com.techdog.GUI;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import java.awt.Image;
-
-import javax.swing.JTabbedPane;
-import javax.swing.JPanel;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLayeredPane;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.border.Border;
 
 import com.techdog.Controller.Camera;
 import com.techdog.Controller.ImageProcessController;
-import com.techdog.Utils.Constant;
 import com.techdog.Utils.DirectoryUtils;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.Arrays;
-import java.util.List;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import com.techdog.model.ImageFromCamera;
 
 public class MainForm extends Thread {
-
+	Queue<ImageFromCamera> queue = new LinkedList<>();
 	private JFrame frame;
 	private JTextField textField;
 
@@ -103,68 +101,82 @@ public class MainForm extends Thread {
 		JLabel lblNewLabel = new JLabel(new ImageIcon(cameraFrame));
 		Thread cameraThread = new Thread() {
 			public void run() {
-				Camera.displayCamera(lblNewLabel, 871, 521);
+				System.out.println("add to queue");
+				Camera.readToQueue(lblNewLabel, 871, 521,queue);
 			}
 		};
 		cameraThread.start();
-
+		Thread cameraThread1 = new Thread() {
+			public void run() {
+				System.out.println("display iamge to frame");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Camera.displayToFrame(lblNewLabel,queue);
+				
+			}
+		};
+		cameraThread1.start();
 		lblNewLabel.setBounds(12, 26, 871, 521);
 		camera.add(lblNewLabel);
 
 		// ADMIN TAB
 		JPanel admin = new JPanel();
 		admin.setBackground(Color.WHITE);
-		tabbedPane.addTab("Admin", null, admin, null);
+		tabbedPane.addTab("Known People Manager", null, admin, null);
 		admin.setLayout(null);
 
 		JLabel trainingImage_1 = new JLabel("");
 		trainingImage_1.setBorder(border);
-		trainingImage_1.setBounds(12, 107, 145, 84);
+		trainingImage_1.setBounds(12, 73, 145, 84);
 		admin.add(trainingImage_1);
 
 		JLabel trainingImage_2 = new JLabel("");
 		trainingImage_2.setBorder(border);
-		trainingImage_2.setBounds(12, 203, 145, 84);
+		trainingImage_2.setBounds(12, 169, 145, 84);
 		admin.add(trainingImage_2);
 
 		JLabel trainingImage_3 = new JLabel("");
 		trainingImage_3.setBorder(border);
-		trainingImage_3.setBounds(190, 203, 145, 84);
+		trainingImage_3.setBounds(190, 169, 145, 84);
 		admin.add(trainingImage_3);
 
 		JLabel trainingImage_4 = new JLabel("");
 		trainingImage_4.setBorder(border);
-		trainingImage_4.setBounds(190, 107, 145, 84);
+		trainingImage_4.setBounds(190, 73, 145, 84);
 		admin.add(trainingImage_4);
 
 		JLabel trainingImage_5 = new JLabel("");
 		trainingImage_5.setBorder(border);
-		trainingImage_5.setBounds(369, 203, 145, 84);
+		trainingImage_5.setBounds(369, 169, 145, 84);
 		admin.add(trainingImage_5);
 
 		JLabel trainingImage_6 = new JLabel("");
 		trainingImage_6.setBorder(border);
-		trainingImage_6.setBounds(369, 107, 145, 84);
+		trainingImage_6.setBounds(369, 73, 145, 84);
 		admin.add(trainingImage_6);
 
 		JLabel trainingImage_7 = new JLabel("");
 		trainingImage_7.setBorder(border);
-		trainingImage_7.setBounds(549, 203, 145, 84);
+		trainingImage_7.setBounds(549, 169, 145, 84);
 		admin.add(trainingImage_7);
 
 		JLabel trainingImage_8 = new JLabel("");
 		trainingImage_8.setBorder(border);
-		trainingImage_8.setBounds(549, 107, 145, 84);
+		trainingImage_8.setBounds(549, 73, 145, 84);
 		admin.add(trainingImage_8);
 
 		JLabel trainingImage_9 = new JLabel("");
 		trainingImage_9.setBorder(border);
-		trainingImage_9.setBounds(728, 203, 145, 84);
+		trainingImage_9.setBounds(728, 169, 145, 84);
 		admin.add(trainingImage_9);
 
 		JLabel trainingImage_10 = new JLabel("");
 		trainingImage_10.setBorder(border);
-		trainingImage_10.setBounds(728, 107, 145, 84);
+		trainingImage_10.setBounds(728, 73, 145, 84);
 		admin.add(trainingImage_10);
 
 		// toggle button for turn on/off NOTIFICATION
@@ -178,26 +190,26 @@ public class MainForm extends Thread {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		tglbtnNewToggleButton.setIcon(new ImageIcon(image));
-		tglbtnNewToggleButton.setSelectedIcon(new ImageIcon(image2));
-		tglbtnNewToggleButton.setPressedIcon(new ImageIcon(image2));
-		tglbtnNewToggleButton.setBorderPainted(false);
-		admin.add(tglbtnNewToggleButton);
-		// label text NOTIFICATION
-		JLabel lblNotification = new JLabel("Notification:");
-		lblNotification.setFont(new Font("Dialog", Font.BOLD, 21));
-		lblNotification.setBounds(74, 497, 158, 15);
-		admin.add(lblNotification);
-
+//		tglbtnNewToggleButton.setIcon(new ImageIcon(image));
+//		tglbtnNewToggleButton.setSelectedIcon(new ImageIcon(image2));
+//		tglbtnNewToggleButton.setPressedIcon(new ImageIcon(image2));
+//		tglbtnNewToggleButton.setBorderPainted(false);
+//		admin.add(tglbtnNewToggleButton);
+//		// label text NOTIFICATION
+//		JLabel lblNotification = new JLabel("Notification:");
+//		lblNotification.setFont(new Font("Dialog", Font.BOLD, 21));
+//		lblNotification.setBounds(74, 497, 158, 15);
+//		admin.add(lblNotification);
+//
 		// label Set Confidence
 		JLabel lblSetConfidence = new JLabel("Set Confidence:");
 		lblSetConfidence.setFont(new Font("Dialog", Font.BOLD, 21));
-		lblSetConfidence.setBounds(416, 497, 189, 15);
+		lblSetConfidence.setBounds(300, 550, 189, 15);
 		admin.add(lblSetConfidence);
 		// text field for Confidence
 		textField = new JTextField();
 		textField.setText("60");
-		textField.setBounds(654, 479, 100, 33);
+		textField.setBounds(500, 540, 100, 33);
 		admin.add(textField);
 		textField.setColumns(10);
 		//create list all label iamge 
@@ -205,7 +217,7 @@ public class MainForm extends Thread {
 				trainingImage_5, trainingImage_6, trainingImage_7, trainingImage_8, trainingImage_9, trainingImage_10);
 		
 		// Conbo box to list all directory
-		JComboBox comboBox = new JComboBox(DirectoryUtils.allSubDirectoryName(Constant.getConstant("dataurl")));
+		JComboBox comboBox = new JComboBox(DirectoryUtils.allSubDirectoryName("/home/hungpp/Desktop/MyFamily"));
 		ImageProcessController.loadKnownPersonImage(comboBox.getSelectedItem().toString(), listJLabel);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -227,17 +239,17 @@ public class MainForm extends Thread {
 
 			}
 		});
-		btnUpdate.setBounds(253, 318, 117, 25);
+		btnUpdate.setBounds(229, 285, 117, 25);
 		admin.add(btnUpdate);
 
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(533, 318, 117, 25);
+		btnDelete.setBounds(518, 285, 117, 25);
 		admin.add(btnDelete);
 
-		JPanel trainingImages = new JPanel();
-		trainingImages.setBackground(Color.WHITE);
-		tabbedPane.addTab("Training Data", null, trainingImages, null);
-		trainingImages.setLayout(null);
+//		JPanel trainingImages = new JPanel();
+//		trainingImages.setBackground(Color.WHITE);
+//		tabbedPane.addTab("Training Data", null, trainingImages, null);
+//		trainingImages.setLayout(null);
 
 		JButton usingCameraButton = new JButton("");
 		usingCameraButton.addMouseListener(new MouseAdapter() {
@@ -255,8 +267,8 @@ public class MainForm extends Thread {
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
-		usingCameraButton.setBounds(176, 218, 110, 100);
-		trainingImages.add(usingCameraButton);
+		usingCameraButton.setBounds(229, 368, 110, 100);
+		admin.add(usingCameraButton);
 
 		JButton usingGallaryButton = new JButton("");
 		usingGallaryButton.addMouseListener(new MouseAdapter() {
@@ -274,7 +286,12 @@ public class MainForm extends Thread {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		usingGallaryButton.setBounds(568, 218, 110, 100);
-		trainingImages.add(usingGallaryButton);
+		usingGallaryButton.setBounds(559, 368, 110, 100);
+		admin.add(usingGallaryButton);
+		
+		JLabel lblAddNewKnown = new JLabel("Add New Known Person");
+		lblAddNewKnown.setFont(new Font("Dialog", Font.BOLD, 21));
+		lblAddNewKnown.setBounds(309, 314, 302, 42);
+		admin.add(lblAddNewKnown);
 	}
 }

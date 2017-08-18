@@ -16,7 +16,7 @@ import com.techdog.Utils.DirectoryUtils;
 
 public class ImageProcessController {
 	public static void loadKnownPersonImage(String name,List<JLabel> listLabel) {
-		String pathKPImage = Constant.getConstant("dataurl")+"/"+name;
+		String pathKPImage = "/home/hungpp/Desktop/MyFamily"+"/"+name;
 		List<Mat> listImage = DirectoryUtils.getAllImageInFolder(pathKPImage);
 		
 		//

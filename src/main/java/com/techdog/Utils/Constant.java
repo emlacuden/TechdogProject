@@ -10,8 +10,8 @@ public class Constant {
 		InputStream input = null;
 
 		try {
-
-			input = Constant.class.getClassLoader().getResourceAsStream("config.properties");
+			ClassLoader loader = Thread.currentThread().getContextClassLoader();    
+			input = loader.getResourceAsStream("/config.properties");
 			//System.out.println(input==null);
 
 			// load a properties file

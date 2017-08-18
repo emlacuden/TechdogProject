@@ -67,16 +67,16 @@ public class TrainingUsingImportImagesGUI {
 		nametxt.setBounds(335, 90, 250, 36);
 		frame.getContentPane().add(nametxt);
 		nametxt.setColumns(10);
-		
-		phoneNumbertxt = new JTextField();
-		phoneNumbertxt.setColumns(10);
-		phoneNumbertxt.setBounds(335, 150, 250, 36);
-		frame.getContentPane().add(phoneNumbertxt);
-		
-		facebooktxt = new JTextField();
-		facebooktxt.setColumns(10);
-		facebooktxt.setBounds(335, 210, 250, 36);
-		frame.getContentPane().add(facebooktxt);
+//		
+//		phoneNumbertxt = new JTextField();
+//		phoneNumbertxt.setColumns(10);
+//		phoneNumbertxt.setBounds(335, 150, 250, 36);
+//		frame.getContentPane().add(phoneNumbertxt);
+//		
+//		facebooktxt = new JTextField();
+//		facebooktxt.setColumns(10);
+//		facebooktxt.setBounds(335, 210, 250, 36);
+//		frame.getContentPane().add(facebooktxt);
 		
 		JLabel lblTraining = new JLabel("Training");
 		lblTraining.setForeground(new Color(51, 51, 51));
@@ -158,13 +158,13 @@ public class TrainingUsingImportImagesGUI {
 		lblName.setBounds(335, 74, 70, 15);
 		frame.getContentPane().add(lblName);
 		
-		JLabel lblPhoneNumber = new JLabel("Phone Number");
-		lblPhoneNumber.setBounds(335, 127, 250, 27);
-		frame.getContentPane().add(lblPhoneNumber);
-		
-		JLabel lblFacebook = new JLabel("Facebook");
-		lblFacebook.setBounds(335, 195, 70, 15);
-		frame.getContentPane().add(lblFacebook);
+//		JLabel lblPhoneNumber = new JLabel("Phone Number");
+//		lblPhoneNumber.setBounds(335, 127, 250, 27);
+//		frame.getContentPane().add(lblPhoneNumber);
+//		
+//		JLabel lblFacebook = new JLabel("Facebook");
+//		lblFacebook.setBounds(335, 195, 70, 15);
+//		frame.getContentPane().add(lblFacebook);
 		
 		JButton btnTrain = new JButton("Train");
 		btnTrain.setBounds(398, 508, 117, 25);
@@ -183,7 +183,7 @@ public class TrainingUsingImportImagesGUI {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				ImportImageAction iIA = new ImportImageAction();
-				iIA.Action(listJLabel, nametxt, phoneNumbertxt);
+				iIA.Action(listJLabel, nametxt);
 			}
 		});
 		btnTrain.addActionListener(new ActionListener() {

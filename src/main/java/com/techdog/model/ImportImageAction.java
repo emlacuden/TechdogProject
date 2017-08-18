@@ -19,13 +19,13 @@ public class ImportImageAction {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void Action(List<JLabel> parent, JTextField name, JTextField phoneNumber) {
+	public void Action(List<JLabel> parent, JTextField name) {
 		if (name == null) {
 			name.setText("");
 		}
-		if (phoneNumber == null) {
-			phoneNumber.setText("");
-		}
+//		if (phoneNumber == null) {
+//			phoneNumber.setText("");
+//		}
 		JFileChooser fileChooser = new JFileChooser();
 		javax.swing.filechooser.FileFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png");
 		fileChooser.setFileFilter(filter);
@@ -37,8 +37,8 @@ public class ImportImageAction {
 			for (File file : files) {
 				index++;
 				String filePath = file.getAbsolutePath();
-				File folder = new File("/home/kibahero2802/TechDogProject/src/main/java/com/techdog/model/dataSave/"
-						+ name.getText() + "-" + phoneNumber.getText());
+				File folder = new File("/home/hungpp/Desktop/MyFamily"
+						+ name.getText());
 				folder.mkdir();
 				InputStream is = null;
 				OutputStream os = null;
