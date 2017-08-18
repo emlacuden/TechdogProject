@@ -21,7 +21,7 @@ import com.techdog.model.ImageFromCamera;
 
 public class Camera {
 	static Mat currentFrame;
-
+	
 	public static BufferedImage matToBufferedImage(Mat frame) {
 		int type = 0;
 		if (frame.channels() == 1) {
